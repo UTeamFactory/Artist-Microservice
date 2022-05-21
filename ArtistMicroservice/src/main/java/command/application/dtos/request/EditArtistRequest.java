@@ -1,8 +1,10 @@
 package command.application.dtos.request;
 
 import lombok.Getter;
+import lombok.Setter;
 
 public class EditArtistRequest {
+    private @Getter @Setter String id;
     private @Getter String firstname;
     private @Getter String lastname;
     private @Getter String alias;

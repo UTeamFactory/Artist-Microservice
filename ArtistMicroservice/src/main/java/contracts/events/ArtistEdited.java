@@ -5,6 +5,7 @@ import lombok.Value;
 @Value
 public class ArtistEdited {
 
+    private String id;
     private String firstname;
     private String lastname;
     private String alias;
@@ -15,7 +16,8 @@ public class ArtistEdited {
     private String facebookLink;
     private String twitterLink;
 
-    public ArtistEdited(String firstname, String lastname, String alias, String description, String phrase, String image, String instagramLink, String facebookLink, String twitterLink) {
+    public ArtistEdited(String id , String firstname, String lastname, String alias, String description, String phrase, String image, String instagramLink, String facebookLink, String twitterLink) {
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.alias = alias;
@@ -25,6 +27,10 @@ public class ArtistEdited {
         this.instagramLink = instagramLink;
         this.facebookLink = facebookLink;
         this.twitterLink = twitterLink;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getFirstname() {

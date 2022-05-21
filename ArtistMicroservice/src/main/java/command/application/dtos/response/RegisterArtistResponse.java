@@ -1,6 +1,10 @@
 package command.application.dtos.response;
 
+import lombok.Value;
+
+@Value
 public class RegisterArtistResponse {
+    private String id;
     private String firstname;
     private String lastname;
     private String alias;

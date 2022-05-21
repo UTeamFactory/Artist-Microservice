@@ -1,9 +1,11 @@
 package command.application.dtos.response;
 
 import lombok.Getter;
+import lombok.Value;
 
+@Value
 public class EditArtistResponse {
-
+    private String id;
     private String firstname;
     private String lastname;
     private String alias;
