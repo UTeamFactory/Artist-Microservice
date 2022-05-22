@@ -10,17 +10,17 @@ import java.time.Instant;
 import java.util.Optional;
 
 @Component
-public class ArtistHistoryViewProyection {
+public class ArtistHistoryViewProjection {
 
     private final ArtistHistoryViewRepository artistHistoryViewRepository;
 
-    public ArtistHistoryViewProyection(ArtistHistoryViewRepository artistHistoryViewRepository) {
+    public ArtistHistoryViewProjection(ArtistHistoryViewRepository artistHistoryViewRepository) {
         this.artistHistoryViewRepository = artistHistoryViewRepository;
     }
 
     @EventHandler
     public void on(ArtistRegistered event, @Timestamp Instant timestamp){
-        ArtistHistoryView artistHistoryView = new ArtistHistoryView(event.getId(), event.getFirstname(), event.getLastname(), event.getAlias(), event.getDescription(), event.getPhrase(), event.getImage(), event.getInstagramLink(), event.getTwitterLink(), event.getFacebookLink());
+        ArtistHistoryView artistHistoryView = new ArtistHistoryView(event.getId(), event.getFirstname(), event.getLastname(), event.getAlias(), event.getDescription(), event.getPhrase(), event.getImage(), event.getInstagramLink(), event.getTwitterLink(), event.getFacebookLink(), event.getOccurredOn());
         artistHistoryViewRepository.save(artistHistoryView);
     }
 
@@ -30,6 +30,7 @@ public class ArtistHistoryViewProyection {
         if(artistHistoryViewOptional.isPresent()){
             ArtistHistoryView artistHistoryView = artistHistoryViewOptional.get();
             artistHistoryView = new ArtistHistoryView(artistHistoryView);
+
             artistHistoryView.setFirstname(event.getFirstname());
             artistHistoryView.setLastname(event.getLastname());
             artistHistoryView.setAlias(event.getAlias());
@@ -39,6 +40,8 @@ public class ArtistHistoryViewProyection {
             artistHistoryView.setInstagramlink(event.getInstagramLink());
             artistHistoryView.setTwitterlink(event.getTwitterLink());
             artistHistoryView.setFacebooklink(event.getFacebookLink());
+            artistHistoryView.setCreatedAt(event.getOcurredOn());
+
             artistHistoryViewRepository.save(artistHistoryView);
         }
     }

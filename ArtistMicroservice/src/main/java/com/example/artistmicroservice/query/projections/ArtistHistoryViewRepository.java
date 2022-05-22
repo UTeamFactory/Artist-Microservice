@@ -17,7 +17,7 @@ public interface ArtistHistoryViewRepository extends JpaRepository<ArtistHistory
             "               FROM artist_history_view WHERE artist_id = :artistId)", nativeQuery = true)
     Optional<ArtistHistoryView> getLastByUserId(String artistId);
 
-    @Query(value = "SELECT * FROM artist_history_view WHERE artist_id = :artistId", nativeQuery = true)
+    @Query(value = "SELECT * FROM artist_history_view WHERE artist_id = :artistId ORDER BY created_at", nativeQuery = true)
     List<ArtistHistoryView> getArtistHistoryByUserId(String artistId);
 
 }

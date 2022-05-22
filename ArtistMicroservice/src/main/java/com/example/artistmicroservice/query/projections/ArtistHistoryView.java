@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.Instant;
 
 public class ArtistHistoryView {
 
@@ -45,9 +46,12 @@ public class ArtistHistoryView {
     @Column(nullable = true) @Getter @Setter
     private String facebooklink;
 
+    @Getter @Setter
+    private Instant createdAt;
+
     public ArtistHistoryView(){}
 
-    public ArtistHistoryView(String id, String firstname, String lastname, String alias, String description, String phrase, String image, String instagramlink, String twitterlink, String facebooklink) {
+    public ArtistHistoryView(String id, String firstname, String lastname, String alias, String description, String phrase, String image, String instagramlink, String twitterlink, String facebooklink, Instant createdAt) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -58,6 +62,7 @@ public class ArtistHistoryView {
         this.instagramlink = instagramlink;
         this.twitterlink = twitterlink;
         this.facebooklink = facebooklink;
+        this.createdAt = createdAt;
     }
 
     public ArtistHistoryView(ArtistHistoryView artistHistoryView) {
@@ -71,7 +76,6 @@ public class ArtistHistoryView {
         this.instagramlink = artistHistoryView.getInstagramlink();
         this.twitterlink = artistHistoryView.getTwitterlink();
         this.facebooklink = artistHistoryView.getFacebooklink();
+        this.createdAt = artistHistoryView.getCreatedAt();
     }
-
-
 }
