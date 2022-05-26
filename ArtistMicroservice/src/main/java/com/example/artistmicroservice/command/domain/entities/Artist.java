@@ -19,18 +19,21 @@ public class Artist {
     })
     private UserId id;
 
+    @AggregateIdentifier
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "value", column = @Column(name = "username", length = 30, nullable = false))
     })
     private Username username;
 
+    @AggregateIdentifier
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "value", column = @Column(name = "password", length = 75, nullable = false))
     })
     private Password password;
 
+    @AggregateIdentifier
     @Embedded
     private AuditTrail auditTrail;
 
@@ -56,36 +59,42 @@ public class Artist {
     })
     private Alias alias;
 
+    @AggregateIdentifier
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "value", column = @Column(name = "description", length = 200, nullable = false))
     })
     private Description description;
 
+    @AggregateIdentifier
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "value", column = @Column(name = "phrase", length = 200, nullable = false))
     })
     private Phrase phrase;
 
+    @AggregateIdentifier
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "value", column = @Column(name = "image", nullable = false))
     })
     private Image image;
 
+    @AggregateIdentifier
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "value", column = @Column(name = "instagram_link", nullable = true))
     })
     private Link instagramLink;
 
+    @AggregateIdentifier
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "value", column = @Column(name = "facebook_link", nullable = true))
     })
     private Link facebookLink;
 
+    @AggregateIdentifier
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "value", column = @Column(name = "twitter_link", nullable = true))
