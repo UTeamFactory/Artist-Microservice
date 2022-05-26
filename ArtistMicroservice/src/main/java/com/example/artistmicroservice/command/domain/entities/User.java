@@ -3,9 +3,7 @@ package com.example.artistmicroservice.command.domain.entities;
 import com.example.artistmicroservice.command.domain.values.*;
 import lombok.Data;
 import org.axonframework.modelling.command.AggregateIdentifier;
-
 import javax.persistence.*;
-
 
 @Entity(name = "User")
 @Table(name = "users")

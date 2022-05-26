@@ -7,9 +7,7 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 public class EditArtist {
 
     @TargetAggregateIdentifier
-
     private String id;
-
     private String firstname;
     private String lastname;
     private String alias;

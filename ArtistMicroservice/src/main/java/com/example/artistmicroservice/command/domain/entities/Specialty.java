@@ -1,13 +1,14 @@
 package com.example.artistmicroservice.command.domain.entities;
 
 import com.example.artistmicroservice.command.domain.values.*;
-
+import org.axonframework.modelling.command.AggregateIdentifier;
+import org.axonframework.spring.stereotype.Aggregate;
 import javax.persistence.*;
 
-@Entity(name = "Specialty")
-@Table(name = "specialties")
+@Aggregate
 public class Specialty {
 
+    @AggregateIdentifier
     @EmbeddedId
     @AttributeOverrides({
             @AttributeOverride(name = "value", column = @Column(name = "id", columnDefinition = "BINARY(16)"))

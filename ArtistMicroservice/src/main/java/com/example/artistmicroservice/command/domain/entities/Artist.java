@@ -1,12 +1,11 @@
 package com.example.artistmicroservice.command.domain.entities;
-import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 
+import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 import com.example.artistmicroservice.command.domain.values.*;
 import com.example.artistmicroservice.contracts.commands.EditArtist;
 import com.example.artistmicroservice.contracts.commands.RegisterArtist;
 import com.example.artistmicroservice.contracts.events.ArtistEdited;
 import com.example.artistmicroservice.contracts.events.ArtistRegistered;
-import lombok.Data;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -14,10 +13,6 @@ import org.axonframework.spring.stereotype.Aggregate;
 import javax.persistence.*;
 import java.time.Instant;
 
-
-@Entity(name = "Artist")
-@Table(name = "artists")
-@Data
 @Aggregate
 public class Artist {
 
@@ -110,7 +105,8 @@ public class Artist {
     })
     private Link twitterLink;
 
-    public Artist(UserId id, Username username, Password password, AuditTrail auditTrail, Firstname firstname, Lastname lastname, Alias alias, Description description, Phrase phrase, Image image, Link instagramLink, Link facebookLink, Link twitterLink) {
+    public Artist(){}
+    /*public Artist(UserId id, Username username, Password password, AuditTrail auditTrail, Firstname firstname, Lastname lastname, Alias alias, Description description, Phrase phrase, Image image, Link instagramLink, Link facebookLink, Link twitterLink) {
         setId(id);
         setUsername(username);
         setPassword(password);
@@ -124,7 +120,7 @@ public class Artist {
         setInstagramLink(instagramLink);
         setFacebookLink(facebookLink);
         setTwitterLink(twitterLink);
-    }
+    }*/
 
     @CommandHandler
     public Artist(RegisterArtist command){
@@ -192,13 +188,6 @@ public class Artist {
         twitterLink = new Link(event.getTwitterLink());
         facebookLink = new Link(event.getFacebookLink());
         instagramLink = new Link(event.getInstagramLink());
-    }
-
-
-
-
-    protected Artist(){
-
     }
 
 }
