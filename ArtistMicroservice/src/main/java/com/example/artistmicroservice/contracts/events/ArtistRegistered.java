@@ -14,7 +14,6 @@ public class ArtistRegistered {
     private String instagramLink;
     private String facebookLink;
     private String twitterLink;
-
     private Instant occurredOn;
 
 }

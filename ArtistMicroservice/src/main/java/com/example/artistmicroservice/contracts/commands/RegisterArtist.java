@@ -5,7 +5,6 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @Value
 public class RegisterArtist {
-
     @TargetAggregateIdentifier
     private String firstname;
     private String lastname;

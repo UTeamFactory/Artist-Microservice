@@ -1,7 +1,6 @@
 package com.example.artistmicroservice.contracts.events;
 
 import lombok.Value;
-
 import java.time.Instant;
 
 @Value
