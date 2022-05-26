@@ -3,10 +3,15 @@ package com.example.artistmicroservice.contracts.commands;
 import lombok.Value;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
+import java.util.UUID;
+
 @Value
 public class RegisterArtist {
 
     @TargetAggregateIdentifier
+
+    private String id;
+
     private String firstname;
     private String lastname;
     private String alias;
@@ -53,7 +58,12 @@ public class RegisterArtist {
         return twitterLink;
     }
 
-    public RegisterArtist(String firstname, String lastname, String alias, String description, String phrase, String image, String instagramLink, String facebookLink, String twitterLink) {
+    public String getId() {
+        return id;
+    }
+
+    public RegisterArtist(String id, String firstname, String lastname, String alias, String description, String phrase, String image, String instagramLink, String facebookLink, String twitterLink) {
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.alias = alias;

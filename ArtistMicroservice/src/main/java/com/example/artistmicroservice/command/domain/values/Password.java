@@ -14,7 +14,7 @@ public class Password {
     private final static int MAX_LENGTH = 30;
     private final static int MIN_LENGTH = 6;
 
-    private Password(String password) {
+    public Password(String password) {
         value = password;
     }
 

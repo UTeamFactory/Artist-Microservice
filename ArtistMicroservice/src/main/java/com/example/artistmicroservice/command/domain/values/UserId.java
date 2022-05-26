@@ -15,7 +15,7 @@ public class UserId implements Serializable {
         this.value = value;
     }
 
-    protected UserId() {
+    public UserId() {
         this.value = UUID.randomUUID();
     }
 }

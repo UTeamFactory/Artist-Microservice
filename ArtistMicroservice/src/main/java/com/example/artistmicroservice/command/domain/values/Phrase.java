@@ -14,7 +14,7 @@ public class Phrase {
     private final static int MAX_LENGTH = 250;
     private final static int MIN_LENGTH = 20;
 
-    private Phrase(String description) { value = description; }
+    public Phrase(String description) { value = description; }
 
     protected Phrase() {
         this.value = "";

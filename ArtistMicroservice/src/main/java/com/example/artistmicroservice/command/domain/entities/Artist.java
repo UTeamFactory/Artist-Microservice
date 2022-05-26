@@ -1,10 +1,19 @@
 package com.example.artistmicroservice.command.domain.entities;
+import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 
 import com.example.artistmicroservice.command.domain.values.*;
+import com.example.artistmicroservice.contracts.commands.EditArtist;
+import com.example.artistmicroservice.contracts.commands.RegisterArtist;
+import com.example.artistmicroservice.contracts.events.ArtistEdited;
+import com.example.artistmicroservice.contracts.events.ArtistRegistered;
 import lombok.Data;
+import org.axonframework.commandhandling.CommandHandler;
+import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
 import javax.persistence.*;
+import java.time.Instant;
+
 
 @Entity(name = "Artist")
 @Table(name = "artists")
@@ -116,6 +125,77 @@ public class Artist {
         setFacebookLink(facebookLink);
         setTwitterLink(twitterLink);
     }
+
+    @CommandHandler
+    public Artist(RegisterArtist command){
+        Instant now = Instant.now();
+        apply(
+          new ArtistRegistered(
+                  command.getId(),
+                  command.getFirstname(),
+                  command.getLastname(),
+                  command.getAlias(),
+                  command.getDescription(),
+                  command.getPhrase(),
+                  command.getImage(),
+                  command.getInstagramLink(),
+                  command.getFacebookLink(),
+                  command.getTwitterLink(),
+                  now
+          )
+        );
+    }
+
+    @CommandHandler
+    public void handle(EditArtist command){
+        Instant now = Instant.now();
+        apply(
+                new ArtistEdited(
+                        command.getId(),
+                        command.getFirstname(),
+                        command.getLastname(),
+                        command.getAlias(),
+                        command.getDescription(),
+                        command.getPhrase(),
+                        command.getImage(),
+                        command.getInstagramLink(),
+                        command.getFacebookLink(),
+                        command.getTwitterLink(),
+                        now
+                )
+        );
+    }
+
+    @EventSourcingHandler
+    protected void on (ArtistRegistered event){
+        id = new UserId();
+        firstname = new Firstname(event.getFirstname());
+        lastname = new Lastname(event.getLastname());
+        alias = new Alias(event.getAlias());
+        description = new Description(event.getDescription());
+        phrase = new Phrase(event.getPhrase());
+        image = new Image(event.getImage());
+        twitterLink = new Link(event.getTwitterLink());
+        facebookLink = new Link(event.getFacebookLink());
+        instagramLink = new Link(event.getInstagramLink());
+
+    }
+
+    @EventSourcingHandler
+    protected void on (ArtistEdited event){
+        firstname = new Firstname(event.getFirstname());
+        lastname = new Lastname(event.getLastname());
+        alias = new Alias(event.getAlias());
+        description = new Description(event.getDescription());
+        phrase = new Phrase(event.getPhrase());
+        image = new Image(event.getImage());
+        twitterLink = new Link(event.getTwitterLink());
+        facebookLink = new Link(event.getFacebookLink());
+        instagramLink = new Link(event.getInstagramLink());
+    }
+
+
+
 
     protected Artist(){
 

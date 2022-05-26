@@ -13,7 +13,7 @@ public class Alias {
     private String value;
     private final static int MAX_LENGTH = 50;
 
-    private Alias(String alias){
+    public Alias(String alias){
         value = alias;
     }
 

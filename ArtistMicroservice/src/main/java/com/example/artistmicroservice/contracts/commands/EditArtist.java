@@ -7,6 +7,9 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 public class EditArtist {
 
     @TargetAggregateIdentifier
+
+    private String id;
+
     private String firstname;
     private String lastname;
     private String alias;
@@ -53,7 +56,12 @@ public class EditArtist {
         return twitterLink;
     }
 
-    public EditArtist(String firstname, String lastname, String alias, String description, String phrase, String image, String instagramLink, String facebookLink, String twitterLink) {
+    public String getId() {
+        return id;
+    }
+
+    public EditArtist(String id, String firstname, String lastname, String alias, String description, String phrase, String image, String instagramLink, String facebookLink, String twitterLink) {
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.alias = alias;
