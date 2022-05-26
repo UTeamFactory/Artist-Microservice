@@ -8,9 +8,7 @@ import java.util.UUID;
 @Value
 public class RegisterArtist {
     @TargetAggregateIdentifier
-
     private String id;
-
     private String firstname;
     private String lastname;
     private String alias;
