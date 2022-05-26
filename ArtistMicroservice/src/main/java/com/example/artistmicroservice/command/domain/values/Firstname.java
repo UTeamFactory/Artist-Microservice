@@ -13,7 +13,7 @@ public class Firstname {
     private String value;
     private final static int MAX_LENGTH = 75;
 
-    private Firstname(String firstname){
+    public Firstname(String firstname){
         value = firstname;
     }
 

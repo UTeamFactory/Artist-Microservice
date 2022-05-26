@@ -12,7 +12,7 @@ public class Username {
     private String value;
     private final static int MAX_LENGTH = 30;
 
-    private Username(String username) {
+    public Username(String username) {
         value = username;
     }
 

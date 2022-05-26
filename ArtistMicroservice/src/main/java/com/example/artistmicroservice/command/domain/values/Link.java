@@ -12,7 +12,7 @@ public class Link {
 
     private String value;
 
-    private Link(String link) { value = link; }
+    public Link(String link) { value = link; }
 
     protected Link() {
         this.value = "";
