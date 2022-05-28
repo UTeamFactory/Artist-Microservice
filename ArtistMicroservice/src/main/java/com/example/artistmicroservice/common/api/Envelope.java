@@ -1,5 +1,6 @@
 package com.example.artistmicroservice.common.api;
 
+import com.example.artistmicroservice.common.application.Error;
 import lombok.Value;
 
 import java.util.ArrayList;

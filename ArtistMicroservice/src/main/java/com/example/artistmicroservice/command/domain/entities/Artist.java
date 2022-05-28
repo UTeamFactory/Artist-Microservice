@@ -15,7 +15,6 @@ import java.time.Instant;
 
 @Aggregate
 public class Artist {
-
     @AggregateIdentifier
     @EmbeddedId
     @AttributeOverrides({

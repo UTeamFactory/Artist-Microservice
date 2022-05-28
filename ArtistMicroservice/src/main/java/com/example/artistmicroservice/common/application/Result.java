@@ -55,7 +55,7 @@ public abstract class Result <SUCCESS, FAILURE>{
         }
     }
 
-    public  static class Failure<SUCCESS, FAILURE> extends Result<SUCCESS, FAILURE> {
+    public static class Failure<SUCCESS, FAILURE> extends Result<SUCCESS, FAILURE> {
         private final FAILURE _failure;
         private Failure(FAILURE failure) {
             _failure = failure;

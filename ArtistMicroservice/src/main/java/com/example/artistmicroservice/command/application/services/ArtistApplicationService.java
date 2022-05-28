@@ -72,7 +72,7 @@ public class ArtistApplicationService {
         return Result.success(registerArtistResponseDto);
     }
 
-    public Result<EditArtistResponse, Notification> register(EditArtistRequest editArtistRequest) throws Exception {
+    public Result<EditArtistResponse, Notification> edit(EditArtistRequest editArtistRequest) throws Exception {
         Notification notification = this.editArtistValidator.validate(editArtistRequest);
         if (notification.hasErrors()){
             return Result.failure(notification);
