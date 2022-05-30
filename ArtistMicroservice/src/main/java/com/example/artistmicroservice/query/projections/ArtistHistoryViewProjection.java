@@ -40,7 +40,7 @@ public class ArtistHistoryViewProjection {
             artistHistoryView.setInstagramlink(event.getInstagramLink());
             artistHistoryView.setTwitterlink(event.getTwitterLink());
             artistHistoryView.setFacebooklink(event.getFacebookLink());
-            artistHistoryView.setCreatedAt(event.getOcurredOn());
+            artistHistoryView.setCreatedAt(event.getOccurredOn());
 
             artistHistoryViewRepository.save(artistHistoryView);
         }

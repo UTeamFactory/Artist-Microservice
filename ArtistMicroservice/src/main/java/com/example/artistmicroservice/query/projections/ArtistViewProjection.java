@@ -36,7 +36,7 @@ public class ArtistViewProjection {
             artistView.setFacebooklink(event.getFacebookLink());
             artistView.setTwitterlink(event.getTwitterLink());
             artistView.setInstagramlink(event.getInstagramLink());
-            artistView.setUpdatedAt(event.getOcurredOn());
+            artistView.setUpdatedAt(event.getOccurredOn());
             artistViewRepository.save(artistView);
         }
     }
