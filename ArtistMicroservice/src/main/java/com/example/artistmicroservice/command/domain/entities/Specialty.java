@@ -9,16 +9,8 @@ import javax.persistence.*;
 public class Specialty {
 
     @AggregateIdentifier
-    @EmbeddedId
-    @AttributeOverrides({
-            @AttributeOverride(name = "value", column = @Column(name = "id", columnDefinition = "BINARY(16)"))
-    })
-    private SpecialtyId id;
+    private String id;
 
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name = "value", column = @Column(name = "specialty_name", length = 75, nullable = false))
-    })
-    private SpecialtyName specialtyName;
+    private String specialtyName;
 
 }
