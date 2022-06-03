@@ -1,20 +1,20 @@
 package com.example.artistmicroservice.command.api;
 
-import com.example.artistmicroservice.command.application.dtos.request.EditArtistRequest;
-import com.example.artistmicroservice.command.application.dtos.request.RegisterArtistRequest;
-import com.example.artistmicroservice.command.application.dtos.response.EditArtistResponse;
-import com.example.artistmicroservice.command.application.dtos.response.RegisterArtistResponse;
-import com.example.artistmicroservice.command.application.services.ArtistApplicationService;
-import com.example.artistmicroservice.command.infrastructure.ArtistRegistryRepository;
-import com.example.artistmicroservice.common.api.ApiController;
-import com.example.artistmicroservice.common.application.Notification;
-import com.example.artistmicroservice.common.application.Result;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.modelling.command.AggregateNotFoundException;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.example.artistmicroservice.common.api.ApiController;
+import com.example.artistmicroservice.common.application.Notification;
+import com.example.artistmicroservice.common.application.Result;
+import com.example.artistmicroservice.command.application.dtos.request.EditArtistRequest;
+import com.example.artistmicroservice.command.application.dtos.request.RegisterArtistRequest;
+import com.example.artistmicroservice.command.application.dtos.response.EditArtistResponse;
+import com.example.artistmicroservice.command.application.dtos.response.RegisterArtistResponse;
+import com.example.artistmicroservice.command.application.services.ArtistApplicationService;
+import com.example.artistmicroservice.command.infrastructure.ArtistRegistryRepository;
 
 @RestController
 @RequestMapping("/artists")
