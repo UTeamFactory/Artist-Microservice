@@ -12,15 +12,15 @@ import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.UUID;
 
 @Aggregate
 public class Artist {
     @AggregateIdentifier
-    @EmbeddedId
     @AttributeOverrides({
             @AttributeOverride(name = "value", column = @Column(name = "id", columnDefinition = "BINARY(16)"))
     })
-    private UserId id;
+    private String id;
 
     @AggregateIdentifier
     @Embedded
@@ -163,7 +163,7 @@ public class Artist {
 
     @EventSourcingHandler
     protected void on (ArtistRegistered event){
-        id = new UserId();
+        id = UUID.randomUUID().toString();
         firstname = new Firstname(event.getFirstname());
         lastname = new Lastname(event.getLastname());
         alias = new Alias(event.getAlias());

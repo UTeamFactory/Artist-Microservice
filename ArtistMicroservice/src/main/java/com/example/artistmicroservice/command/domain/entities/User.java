@@ -1,14 +1,12 @@
 package com.example.artistmicroservice.command.domain.entities;
 
 import com.example.artistmicroservice.command.domain.values.*;
-import lombok.Data;
 import org.axonframework.modelling.command.AggregateIdentifier;
+import org.axonframework.spring.stereotype.Aggregate;
+
 import javax.persistence.*;
 
-@Entity(name = "User")
-@Table(name = "users")
-@Data
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Aggregate
 public class User {
 
     @AggregateIdentifier
@@ -16,7 +14,7 @@ public class User {
     @AttributeOverrides({
             @AttributeOverride(name = "value", column = @Column(name = "id", columnDefinition = "BINARY(16)"))
     })
-    private UserId id;
+    private String id;
 
     @Embedded
     @AttributeOverrides({
@@ -33,12 +31,12 @@ public class User {
     @Embedded
     private AuditTrail auditTrail;
 
-    public User(UserId id, Username username, Password password, AuditTrail auditTrail) {
+   /* public User(UserId id, Username username, Password password, AuditTrail auditTrail) {
         setId(id);
         setUsername(username);
         setPassword(password);
         setAuditTrail(auditTrail);
-    }
+    }*/
 
     protected User(){}
 

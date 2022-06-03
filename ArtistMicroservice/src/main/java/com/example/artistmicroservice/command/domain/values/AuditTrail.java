@@ -45,7 +45,7 @@ public class AuditTrail {
         this.updatedBy = null;
     }
 
-    public static Result<AuditTrail, Notification> create(UUID createdBy) {
+    public static Result<AuditTrail, Notification> create(String createdBy) {
 
         return Result.success(new AuditTrail(LocalDateTime.now(ZoneOffset.UTC), null, UserId.of(createdBy), null));
     }

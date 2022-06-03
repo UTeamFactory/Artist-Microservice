@@ -9,13 +9,13 @@ import java.util.UUID;
 @Embeddable
 @Value(staticConstructor = "of")
 public class UserId implements Serializable {
-    private UUID value;
+    private String value;
 
-    private UserId(UUID value) {
+    private UserId(String value) {
         this.value = value;
     }
 
     public UserId() {
-        this.value = UUID.randomUUID();
+        this.value = UUID.randomUUID().toString();
     }
 }
