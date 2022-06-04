@@ -16,10 +16,8 @@ import java.util.UUID;
 
 @Aggregate
 public class Artist {
-
     @AggregateIdentifier
-    private String id;
-
+    private String artistId;
     private String username;
     private String password;
     private String firstname;
@@ -92,7 +90,7 @@ public class Artist {
 
     @EventSourcingHandler
     protected void on (ArtistRegistered event){
-        id = event.getId();
+        artistId = event.getId();
         firstname = event.getFirstname();
         lastname = event.getLastname();
         alias = event.getAlias();

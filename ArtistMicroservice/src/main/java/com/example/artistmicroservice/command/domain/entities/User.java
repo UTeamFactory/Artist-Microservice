@@ -14,7 +14,7 @@ public class User {
     @AttributeOverrides({
             @AttributeOverride(name = "value", column = @Column(name = "id", columnDefinition = "BINARY(16)"))
     })
-    private String id;
+    private String userId;
 
     @Embedded
     @AttributeOverrides({

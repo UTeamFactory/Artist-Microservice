@@ -2,7 +2,6 @@ package com.example.artistmicroservice.command.application.validators;
 
 import com.example.artistmicroservice.command.application.dtos.request.EditArtistRequest;
 import com.example.artistmicroservice.command.domain.entities.Artist;
-import com.example.artistmicroservice.command.infrastructure.ArtistRegistry;
 import com.example.artistmicroservice.command.infrastructure.ArtistRegistryRepository;
 import com.example.artistmicroservice.common.application.Notification;
 import org.axonframework.messaging.unitofwork.DefaultUnitOfWork;

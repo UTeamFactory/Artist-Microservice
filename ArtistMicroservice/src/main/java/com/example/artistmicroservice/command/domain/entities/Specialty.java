@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Specialty {
 
     @AggregateIdentifier
-    private String id;
+    private String specialtyId;
 
     private String specialtyName;
 
