@@ -24,7 +24,7 @@ public class ArtistViewProjection {
 
     @EventHandler
     public void on(ArtistEdited event, @Timestamp Instant timestamp){
-        Optional<ArtistView> artistViewOptional = artistViewRepository.findById(event.getId().toString());
+        Optional<ArtistView> artistViewOptional = artistViewRepository.findById(event.getId());
         if(artistViewOptional.isPresent()){
             ArtistView artistView = artistViewOptional.get();
             artistView.setFirstname(event.getFirstname());

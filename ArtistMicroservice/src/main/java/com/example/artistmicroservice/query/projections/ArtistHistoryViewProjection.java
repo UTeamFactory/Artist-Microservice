@@ -26,7 +26,7 @@ public class ArtistHistoryViewProjection {
 
     @EventHandler
     public void on(ArtistEdited event, @Timestamp Instant timestamp){
-        Optional<ArtistHistoryView> artistHistoryViewOptional = artistHistoryViewRepository.getLastByUserId(event.getId().toString());
+        Optional<ArtistHistoryView> artistHistoryViewOptional = artistHistoryViewRepository.getLastByUserId(event.getId());
         if(artistHistoryViewOptional.isPresent()){
             ArtistHistoryView artistHistoryView = artistHistoryViewOptional.get();
             artistHistoryView = new ArtistHistoryView(artistHistoryView);
