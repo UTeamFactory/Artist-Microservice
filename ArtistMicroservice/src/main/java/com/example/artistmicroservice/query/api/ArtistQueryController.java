@@ -1,12 +1,15 @@
 package com.example.artistmicroservice.query.api;
 
+import com.example.artistmicroservice.query.projections.ArtistHistoryView;
+import com.example.artistmicroservice.query.projections.ArtistHistoryViewRepository;
+import com.example.artistmicroservice.query.projections.ArtistView;
+import com.example.artistmicroservice.query.projections.ArtistViewRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.artistmicroservice.query.projections.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -51,7 +54,7 @@ public class ArtistQueryController {
     @Operation(summary = "Get artist history")
     public ResponseEntity<List<ArtistHistoryView>> getHistoryById(@PathVariable("id") String id){
         try {
-            List<ArtistHistoryView> artists = artistHistoryViewRepository.getArtistHistoryByUserId(id);
+            List<ArtistHistoryView> artists = artistHistoryViewRepository.getHistoryByArtistId(id);
             return new ResponseEntity<List<ArtistHistoryView>>(artists, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

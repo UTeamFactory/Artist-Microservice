@@ -8,9 +8,9 @@ import java.util.UUID;
 @Value
 public class RegisterArtist {
     @TargetAggregateIdentifier
-    private String id;
-    private String firstname;
-    private String lastname;
+    private String artistId;
+    private String firstName;
+    private String lastName;
     private String alias;
     private String description;
     private String phrase;
@@ -20,11 +20,11 @@ public class RegisterArtist {
     private String twitterLink;
 
     public String getFirstname() {
-        return firstname;
+        return firstName;
     }
 
     public String getLastname() {
-        return lastname;
+        return lastName;
     }
 
     public String getAlias() {
@@ -55,14 +55,14 @@ public class RegisterArtist {
         return twitterLink;
     }
 
-    public String getId() {
-        return id;
+    public String getArtistId() {
+        return artistId;
     }
 
-    public RegisterArtist(String id, String firstname, String lastname, String alias, String description, String phrase, String image, String instagramLink, String facebookLink, String twitterLink) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
+    public RegisterArtist(String artistId, String firstName, String lastName, String alias, String description, String phrase, String image, String instagramLink, String facebookLink, String twitterLink) {
+        this.artistId = artistId;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.alias = alias;
         this.description = description;
         this.phrase = phrase;

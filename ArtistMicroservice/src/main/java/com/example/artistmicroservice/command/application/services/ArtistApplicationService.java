@@ -15,7 +15,6 @@ import com.example.artistmicroservice.contracts.commands.RegisterArtist;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.stereotype.Component;
 
-import java.awt.image.RescaleOp;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
@@ -58,7 +57,7 @@ public class ArtistApplicationService {
             throw new Exception();
         }
         RegisterArtistResponse registerArtistResponseDto = new RegisterArtistResponse(
-                registerArtist.getId(),
+                registerArtist.getArtistId(),
                 registerArtist.getFirstname(),
                 registerArtist.getLastname(),
                 registerArtist.getAlias(),
@@ -96,7 +95,7 @@ public class ArtistApplicationService {
             throw new Exception();
         }
         EditArtistResponse editArtistResponse = new EditArtistResponse(
-                editArtist.getId(),
+                editArtist.getArtistId(),
                 editArtist.getFirstname(),
                 editArtist.getLastname(),
                 editArtist.getAlias(),

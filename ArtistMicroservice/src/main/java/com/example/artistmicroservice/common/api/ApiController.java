@@ -1,6 +1,7 @@
 package com.example.artistmicroservice.common.api;
 
 import java.util.List;
+
 import com.example.artistmicroservice.common.application.Error;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

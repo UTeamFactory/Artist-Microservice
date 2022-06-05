@@ -18,10 +18,10 @@ import java.util.UUID;
 public class Artist {
     @AggregateIdentifier
     private String artistId;
-    private String username;
-    private String password;
-    private String firstname;
-    private String lastname;
+    // String userName;
+    //private String password;
+    private String firstName;
+    private String lastName;
     private String alias;
     private String description;
     private String phrase;
@@ -53,7 +53,7 @@ public class Artist {
         Instant now = Instant.now();
         apply(
           new ArtistRegistered(
-                  command.getId(),
+                  command.getArtistId(),
                   command.getFirstname(),
                   command.getLastname(),
                   command.getAlias(),
@@ -73,7 +73,7 @@ public class Artist {
         Instant now = Instant.now();
         apply(
                 new ArtistEdited(
-                        command.getId(),
+                        command.getArtistId(),
                         command.getFirstname(),
                         command.getLastname(),
                         command.getAlias(),
@@ -90,9 +90,9 @@ public class Artist {
 
     @EventSourcingHandler
     protected void on (ArtistRegistered event){
-        artistId = event.getId();
-        firstname = event.getFirstname();
-        lastname = event.getLastname();
+        artistId = event.getArtistId();
+        firstName = event.getFirstName();
+        lastName = event.getLastName();
         alias = event.getAlias();
         description = event.getDescription();
         phrase = event.getPhrase();
@@ -100,13 +100,12 @@ public class Artist {
         twitterLink = event.getTwitterLink();
         facebookLink = event.getFacebookLink();
         instagramLink = event.getInstagramLink();
-
     }
 
     @EventSourcingHandler
     protected void on (ArtistEdited event){
-        firstname = event.getFirstname();
-        lastname = event.getLastname();
+        firstName = event.getFirstName();
+        lastName = event.getLastName();
         alias = event.getAlias();
         description = event.getDescription();
         phrase = event.getPhrase();

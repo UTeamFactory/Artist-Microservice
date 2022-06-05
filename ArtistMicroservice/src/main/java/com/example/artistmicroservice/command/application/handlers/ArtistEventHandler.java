@@ -22,9 +22,9 @@ public class ArtistEventHandler {
     @EventHandler
     public void on(ArtistRegistered event){
         artistRegistryRepository.save(new ArtistRegistry(
-                event.getId(),
-                event.getFirstname(),
-                event.getLastname(),
+                event.getArtistId(),
+                event.getFirstName(),
+                event.getLastName(),
                 event.getAlias(),
                 event.getDescription(),
                 event.getPhrase(),
@@ -37,12 +37,12 @@ public class ArtistEventHandler {
 
     @EventHandler
     public void on(ArtistEdited event){
-        Optional<ArtistRegistry> ArtistRegistryOptional = artistRegistryRepository.getByArtistId(event.getId());
+        Optional<ArtistRegistry> ArtistRegistryOptional = artistRegistryRepository.getByArtistId(event.getArtistId());
         ArtistRegistryOptional.ifPresent(artistRegistryRepository::delete);
         artistRegistryRepository.save(new ArtistRegistry(
-                event.getId(),
-                event.getFirstname(),
-                event.getLastname(),
+                event.getArtistId(),
+                event.getFirstName(),
+                event.getLastName(),
                 event.getAlias(),
                 event.getDescription(),
                 event.getPhrase(),

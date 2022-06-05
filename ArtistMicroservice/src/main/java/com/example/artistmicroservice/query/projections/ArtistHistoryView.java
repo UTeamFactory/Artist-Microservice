@@ -19,13 +19,13 @@ public class ArtistHistoryView {
     private Long artistHistoryId;
 
     @Column(length = 36) @Getter @Setter
-    private String id;
+    private String artistId;
 
     @Column(length=75) @Getter @Setter
-    private String firstname;
+    private String firstName;
 
     @Column(length=75) @Getter @Setter
-    private String lastname;
+    private String lastName;
 
     @Column(length=75) @Getter @Setter
     private String alias;
@@ -40,44 +40,44 @@ public class ArtistHistoryView {
     private String image;
 
     @Column(nullable = true) @Getter @Setter
-    private String instagramlink;
+    private String instagramLink;
 
     @Column(nullable = true) @Getter @Setter
-    private String twitterlink;
+    private String twitterLink;
 
     @Column(nullable = true) @Getter @Setter
-    private String facebooklink;
+    private String facebookLink;
 
     @Getter @Setter
     private Instant createdAt;
 
     public ArtistHistoryView(){}
 
-    public ArtistHistoryView(String id, String firstname, String lastname, String alias, String description, String phrase, String image, String instagramlink, String twitterlink, String facebooklink, Instant createdAt) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
+    public ArtistHistoryView(String artistId, String firstName, String lastName, String alias, String description, String phrase, String image, String instagramLink, String twitterLink, String facebookLink, Instant createdAt) {
+        this.artistId = artistId;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.alias = alias;
         this.description = description;
         this.phrase = phrase;
         this.image = image;
-        this.instagramlink = instagramlink;
-        this.twitterlink = twitterlink;
-        this.facebooklink = facebooklink;
+        this.instagramLink = instagramLink;
+        this.twitterLink = twitterLink;
+        this.facebookLink = facebookLink;
         this.createdAt = createdAt;
     }
 
     public ArtistHistoryView(ArtistHistoryView artistHistoryView) {
-        this.id = artistHistoryView.getId();
-        this.firstname = artistHistoryView.getFirstname();
-        this.lastname = artistHistoryView.getLastname();
+        this.artistId = artistHistoryView.getArtistId();
+        this.firstName = artistHistoryView.getFirstName();
+        this.lastName = artistHistoryView.getLastName();
         this.alias = artistHistoryView.getAlias();
         this.description = artistHistoryView.getDescription();
         this.phrase = artistHistoryView.getPhrase();
         this.image = artistHistoryView.getImage();
-        this.instagramlink = artistHistoryView.getInstagramlink();
-        this.twitterlink = artistHistoryView.getTwitterlink();
-        this.facebooklink = artistHistoryView.getFacebooklink();
+        this.instagramLink = artistHistoryView.getInstagramLink();
+        this.twitterLink = artistHistoryView.getTwitterLink();
+        this.facebookLink = artistHistoryView.getFacebookLink();
         this.createdAt = artistHistoryView.getCreatedAt();
     }
 }

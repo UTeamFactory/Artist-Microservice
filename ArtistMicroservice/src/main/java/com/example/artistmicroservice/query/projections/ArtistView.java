@@ -12,13 +12,13 @@ import java.time.Instant;
 public class ArtistView {
     @Id
     @Column(length = 36) @Getter @Setter
-    private String id;
+    private String artistId;
 
     @Column(length=75) @Getter @Setter
-    private String firstname;
+    private String firstName;
 
     @Column(length=75) @Getter @Setter
-    private String lastname;
+    private String lastName;
 
     @Column(length=75) @Getter @Setter
     private String alias;
@@ -33,13 +33,13 @@ public class ArtistView {
     private String image;
 
     @Column(nullable = true) @Getter @Setter
-    private String instagramlink;
+    private String instagramLink;
 
     @Column(nullable = true) @Getter @Setter
-    private String twitterlink;
+    private String twitterLink;
 
     @Column(nullable = true) @Getter @Setter
-    private String facebooklink;
+    private String facebookLink;
 
     private Instant createdAt;
 
@@ -49,17 +49,17 @@ public class ArtistView {
     public ArtistView() {
     }
 
-    public ArtistView(String id, String firstname, String lastname, String alias, String description, String phrase, String image, String instagramlink, String twitterlink, String facebooklink, Instant createdAt) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
+    public ArtistView(String artistId, String firstName, String lastName, String alias, String description, String phrase, String image, String instagramLink, String twitterLink, String facebookLink, Instant createdAt) {
+        this.artistId = artistId;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.alias = alias;
         this.description = description;
         this.phrase = phrase;
         this.image = image;
-        this.instagramlink = instagramlink;
-        this.twitterlink = twitterlink;
-        this.facebooklink = facebooklink;
+        this.instagramLink = instagramLink;
+        this.twitterLink = twitterLink;
+        this.facebookLink = facebookLink;
         this.createdAt = createdAt;
     }
 }

@@ -4,9 +4,9 @@ import lombok.Value;
 import java.time.Instant;
 @Value
 public class ArtistRegistered {
-    private String id;
-    private String firstname;
-    private String lastname;
+    private String artistId;
+    private String firstName;
+    private String lastName;
     private String alias;
     private String description;
     private String phrase;

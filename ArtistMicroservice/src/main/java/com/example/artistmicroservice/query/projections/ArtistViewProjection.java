@@ -18,24 +18,24 @@ public class ArtistViewProjection {
 
     @EventHandler
     public void on(ArtistRegistered event, @Timestamp Instant timestamp){
-        ArtistView artistView = new ArtistView(event.getId(), event.getFirstname(), event.getLastname() ,event.getAlias(), event.getDescription(), event.getPhrase(), event.getImage(), event.getTwitterLink(), event.getInstagramLink(), event.getFacebookLink(), event.getOccurredOn());
+        ArtistView artistView = new ArtistView(event.getArtistId(), event.getFirstName(), event.getLastName() ,event.getAlias(), event.getDescription(), event.getPhrase(), event.getImage(), event.getTwitterLink(), event.getInstagramLink(), event.getFacebookLink(), event.getOccurredOn());
         artistViewRepository.save(artistView);
     }
 
     @EventHandler
     public void on(ArtistEdited event, @Timestamp Instant timestamp){
-        Optional<ArtistView> artistViewOptional = artistViewRepository.findById(event.getId());
+        Optional<ArtistView> artistViewOptional = artistViewRepository.findById(event.getArtistId().toString());
         if(artistViewOptional.isPresent()){
             ArtistView artistView = artistViewOptional.get();
-            artistView.setFirstname(event.getFirstname());
-            artistView.setLastname(event.getLastname());
+            artistView.setFirstName(event.getFirstName());
+            artistView.setLastName(event.getLastName());
             artistView.setAlias(event.getAlias());
             artistView.setDescription(event.getDescription());
             artistView.setPhrase(event.getPhrase());
             artistView.setImage(event.getImage());
-            artistView.setFacebooklink(event.getFacebookLink());
-            artistView.setTwitterlink(event.getTwitterLink());
-            artistView.setInstagramlink(event.getInstagramLink());
+            artistView.setFacebookLink(event.getFacebookLink());
+            artistView.setTwitterLink(event.getTwitterLink());
+            artistView.setInstagramLink(event.getInstagramLink());
             artistView.setUpdatedAt(event.getOccurredOn());
             artistViewRepository.save(artistView);
         }
