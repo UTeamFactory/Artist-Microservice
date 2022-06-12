@@ -25,7 +25,7 @@ public class Phrase {
         phrase = phrase == null ? "" : phrase.trim();
 
         if(phrase.isEmpty()){
-            notification.addError("description is required", null);
+            notification.addError("phrase is required", null);
             return Result.failure(notification);
         }
 

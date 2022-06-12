@@ -8,14 +8,14 @@ import java.util.UUID;
 
 @Embeddable
 @Value(staticConstructor = "of")
-public class UserId implements Serializable {
+public class ArtistId implements Serializable {
     private String value;
 
-    private UserId(String value) {
+    public ArtistId(String value) {
         this.value = value;
     }
 
-    public UserId() {
+    protected ArtistId() {
         this.value = UUID.randomUUID().toString();
     }
 }

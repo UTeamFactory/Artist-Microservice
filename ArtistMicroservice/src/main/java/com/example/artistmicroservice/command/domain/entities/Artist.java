@@ -12,41 +12,73 @@ import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
 import javax.persistence.*;
 import java.time.Instant;
-import java.util.UUID;
 
 @Aggregate
 public class Artist {
+    /*@AggregateIdentifier
+    @EmbeddedId
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(name = "artist_id"))
+    })
+    private ArtistId artistId;*/
     @AggregateIdentifier
     private String artistId;
-    // String userName;
-    //private String password;
-    private String firstName;
-    private String lastName;
-    private String alias;
-    private String description;
-    private String phrase;
-    private String image;
-    private String instagramLink;
-    private String facebookLink;
-    private String twitterLink;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(name = "first_name", length = 100, nullable = false))
+    })
+    private Firstname firstName;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(name = "last_name", length = 100, nullable = false))
+    })
+    private Lastname lastName;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(name = "alias", length = 50, nullable = false))
+    })
+    private Alias alias;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(name = "description", length = 200, nullable = false))
+    })
+    private Description description;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(name = "phrase", length = 150, nullable = false))
+    })
+    private Phrase phrase;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(name = "image", length = 150, nullable = false))
+    })
+    private Image image;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(name = "instagram_link", length = 150, nullable = false))
+    })
+    private Link instagramLink;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(name = "facebook_link", length = 150, nullable = false))
+    })
+    private Link facebookLink;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(name = "twitter_link", length = 150, nullable = false))
+    })
+    private Link twitterLink;
 
     public Artist(){}
-
-    /*public Artist(UserId id, Username username, Password password, AuditTrail auditTrail, Firstname firstname, Lastname lastname, Alias alias, Description description, Phrase phrase, Image image, Link instagramLink, Link facebookLink, Link twitterLink) {
-        setId(id);
-        setUsername(username);
-        setPassword(password);
-        setFirstname(firstname);
-        setLastname(lastname);
-        setAuditTrail(auditTrail);
-        setAlias(alias);
-        setDescription(description);
-        setPhrase(phrase);
-        setImage(image);
-        setInstagramLink(instagramLink);
-        setFacebookLink(facebookLink);
-        setTwitterLink(twitterLink);
-    }*/
 
     @CommandHandler
     public Artist(RegisterArtist command){
@@ -91,28 +123,28 @@ public class Artist {
     @EventSourcingHandler
     protected void on (ArtistRegistered event){
         artistId = event.getArtistId();
-        firstName = event.getFirstName();
-        lastName = event.getLastName();
-        alias = event.getAlias();
-        description = event.getDescription();
-        phrase = event.getPhrase();
-        image = event.getImage();
-        twitterLink = event.getTwitterLink();
-        facebookLink = event.getFacebookLink();
-        instagramLink = event.getInstagramLink();
+        firstName = new Firstname(event.getFirstName());
+        lastName = new Lastname(event.getLastName());
+        alias = new Alias(event.getAlias());
+        description = new Description(event.getDescription());
+        phrase = new Phrase(event.getPhrase());
+        image = new Image(event.getImage());
+        twitterLink = new Link(event.getTwitterLink());
+        facebookLink = new Link(event.getFacebookLink());
+        instagramLink = new Link(event.getInstagramLink());
     }
 
     @EventSourcingHandler
     protected void on (ArtistEdited event){
-        firstName = event.getFirstName();
-        lastName = event.getLastName();
-        alias = event.getAlias();
-        description = event.getDescription();
-        phrase = event.getPhrase();
-        image = event.getImage();
-        twitterLink = event.getTwitterLink();
-        facebookLink = event.getFacebookLink();
-        instagramLink = event.getInstagramLink();
+        firstName = new Firstname(event.getFirstName());
+        lastName = new Lastname(event.getLastName());
+        alias = new Alias(event.getAlias());
+        description = new Description(event.getDescription());
+        phrase = new Phrase(event.getPhrase());
+        image = new Image(event.getImage());
+        twitterLink = new Link(event.getTwitterLink());
+        facebookLink = new Link(event.getFacebookLink());
+        instagramLink = new Link(event.getInstagramLink());
     }
 
 }

@@ -20,7 +20,7 @@ public class ArtistHistoryViewProjection {
 
     @EventHandler
     public void on(ArtistRegistered event, @Timestamp Instant timestamp){
-        ArtistHistoryView artistHistoryView = new ArtistHistoryView(event.getArtistId(), event.getFirstName(), event.getLastName(), event.getAlias(), event.getDescription(), event.getPhrase(), event.getImage(), event.getInstagramLink(), event.getTwitterLink(), event.getFacebookLink(), event.getOccurredOn());
+        ArtistHistoryView artistHistoryView = new ArtistHistoryView(event.getArtistId(), event.getFirstName(), event.getLastName(), event.getAlias(), event.getDescription(), event.getPhrase(), event.getImage(), event.getInstagramLink(), event.getFacebookLink(), event.getTwitterLink(), event.getOccurredOn());
         artistHistoryViewRepository.save(artistHistoryView);
     }
 

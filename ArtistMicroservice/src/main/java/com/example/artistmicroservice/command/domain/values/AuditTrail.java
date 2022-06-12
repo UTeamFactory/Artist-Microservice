@@ -22,15 +22,15 @@ public class AuditTrail {
     @AttributeOverrides({
             @AttributeOverride(name = "value", column = @Column(name = "created_by"))
     })
-    private UserId createdBy;
+    private ArtistId createdBy;
 
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "value", column = @Column(name = "updated_by"))
     })
-    private UserId updatedBy;
+    private ArtistId updatedBy;
 
-    private AuditTrail(LocalDateTime createdAt, LocalDateTime updatedAt, UserId createdBy, UserId updatedBy) {
+    private AuditTrail(LocalDateTime createdAt, LocalDateTime updatedAt, ArtistId createdBy, ArtistId updatedBy) {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.createdBy = createdBy;
@@ -46,6 +46,6 @@ public class AuditTrail {
 
     public static Result<AuditTrail, Notification> create(String createdBy) {
 
-        return Result.success(new AuditTrail(LocalDateTime.now(ZoneOffset.UTC), null, UserId.of(createdBy), null));
+        return Result.success(new AuditTrail(LocalDateTime.now(ZoneOffset.UTC), null, ArtistId.of(createdBy), null));
     }
 }
